@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+    scheduler:
+        build: ./data
+        restart: always
+        environment:
+          METHOD: 'startup'
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - ./data/logs:/app/logs
+            - ./data:/app
+    app:
+        build: ./app
+        restart: always
+        ports: 
+          - 5252:8050
+        depends_on: 
+          - scheduler
+        volumes:
+            - ./app:/app
