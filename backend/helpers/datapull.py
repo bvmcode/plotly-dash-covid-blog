@@ -39,7 +39,7 @@ def nightly():
     logging.info(f'download_and_transform function - fetching url - {url_updated}')
     df = pd.read_csv(url_updated)
     df = df[df['Province_State'] == 'New Jersey'][FIELDS]
-    df['date'] = yesterday.strftime('%m-%d-%Y').strftime('%m-%d-%Y')
+    df['date'] = yesterday.strftime('%m-%d-%Y')
     df.to_csv(FILE_PATH, mode='a', header=False, index=False)
     logging.info('download_and_transform function - end')
 
