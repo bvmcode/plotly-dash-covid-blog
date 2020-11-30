@@ -4,12 +4,12 @@ RUN apt-get update \
   && apt-get install -y python3-pip python3-dev \
   && pip3 install --upgrade pip 
 
-COPY ./requirements.txt /app/requirements.txt
+COPY ./requirements.txt /data/requirements.txt
 
-WORKDIR /app
+WORKDIR /data
 
 RUN python3 -m pip install -r requirements.txt
 
-COPY . /app
+COPY . /data
 
 CMD ["python3", "-u", "main.py"]

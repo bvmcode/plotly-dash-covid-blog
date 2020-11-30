@@ -2,14 +2,14 @@ version: '3'
 
 services:
     scheduler:
-        build: ./data
+        build: ./backend
         restart: always
         environment:
-          METHOD: 'startup'
+          METHOD: 'nightly'
         volumes:
             - /etc/localtime:/etc/localtime:ro
-            - ./data/logs:/app/logs
-            - ./data:/app
+            - ./backend/logs:/data/logs
+            - covid:/data/files
     app:
         build: ./app
         restart: always
@@ -18,4 +18,9 @@ services:
         depends_on: 
           - scheduler
         volumes:
+            - /etc/localtime:/etc/localtime:ro
             - ./app:/app
+            - covid:/app/files
+
+volumes:
+  covid:

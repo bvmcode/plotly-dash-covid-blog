@@ -1,8 +1,9 @@
 dash
+plotly
 dash-bootstrap-components
 dash-core-components
 dash-html-components
 dash-renderer
-plotly
+dash-bootstrap-components
 numpy
 pandas
